@@ -19,6 +19,7 @@ import java.util.Arrays;
 
 import static com.example.demo4.SecurityApp.entities.enums.Role.ADMIN;
 import static com.example.demo4.SecurityApp.entities.enums.Role.CREATOR;
+import static com.example.demo4.SecurityApp.entities.enums.Role.USER;
 
 @Configuration
 @EnableWebSecurity
@@ -39,7 +40,7 @@ public class WebSecurityConfig {
                         .requestMatchers(publicRoutes).permitAll()
                         .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/posts/**")
-                            .hasAnyRole(ADMIN.name(), CREATOR.name())
+                            .hasAnyRole(ADMIN.name(), CREATOR.name(),USER.name())
                         .anyRequest().authenticated())
                 .csrf(csrfConfig -> csrfConfig.disable())
                 .sessionManagement(sessionConfig -> sessionConfig
