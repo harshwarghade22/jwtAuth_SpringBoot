@@ -1,10 +1,12 @@
 package com.example.demo4.SecurityApp;
 
 import com.example.demo4.SecurityApp.entities.User;
+import com.example.demo4.SecurityApp.entities.enums.Role;
 import com.example.demo4.SecurityApp.services.JwtService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import java.util.Set;
 
 @SpringBootTest
 class SecurityAppApplicationTests {
@@ -15,7 +17,7 @@ class SecurityAppApplicationTests {
 	@Test
 	void contextLoads() {
 
-		User user = new User(4L, "anuj@gmail.com", "1234", "Anuj");
+		User user = new User(4L, "anuj@gmail.com", "1234", "Anuj", Set.of(Role.USER));
 
 		String token = jwtService.generateAccessToken(user);
 
